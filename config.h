@@ -62,7 +62,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "kitty", NULL };
-static const char *exitcmd[]  = { "killall", "dwm", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -99,8 +98,8 @@ static Key keys[] = {
 
     // super+e: Not defined yet
 	// { MODKEY                        XK_e,      killclient,     {0} },
-    // super+shift+e: Exit x session
-	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = exitcmd} },
+    // super+shift+e: Exit x session. Bound in sxhkd
+	// { MODKEY|ShiftMask,             XK_e,      spawn,          {.v = exitcmd} },
 
     // super+r: Not defined yet
 	// { MODKEY                        XK_r,      killclient,     {0} },
