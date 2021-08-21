@@ -65,11 +65,6 @@ static const char *termcmd[]  = { "kitty", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 
     // Sorting by keyboard order, commented if shortcut is defined elsewhere
 
@@ -83,6 +78,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
+
+	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 
     // Super+tab: Cycle between tags
 	{ MODKEY,                       XK_Tab,    view,           {0} },
@@ -107,8 +105,7 @@ static Key keys[] = {
 	// { MODKEY|ShiftMask,             XK_r,      spawn,          {.v = exitcmd} },
 
     // super+t: Taken by udevmon
-    // super+shift+t: Not defined yet
-	// { MODKEY|ShiftMask,             XK_t,      spawn,          {.v = exitcmd} },
+    // super+shift+t: Taken by udevmon
 
     // super+y: Not defined yet
 	// { MODKEY                        XK_y,      killclient,     {0} },
@@ -151,8 +148,8 @@ static Key keys[] = {
 	// { MODKEY|ShiftMask,             XK_d,      spawn,          {.v = exitcmd} },
 
     // super+f: Taken by udevmon and bound to ctrl+f
-    // super+shift+f: Not defined yet
-	// { MODKEY|ShiftMask,             XK_f,      spawn,          {.v = exitcmd} },
+    // super+shift+f: Change to floating layout
+	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
 
     // super+g: Taken by udevmon and bound to ctrl+g
     // super+shift+g: Not defined yet
@@ -213,10 +210,10 @@ static Key keys[] = {
     // super+shift+n: Not defined yet
 	// { MODKEY|ShiftMask,             XK_n,      spawn,          {.v = exitcmd} },
 
-    // super+m: Not defined yet
-	// { MODKEY                        XK_m,      killclient,     {0} },
-    // super+shift+m: Not defined yet
-	// { MODKEY|ShiftMask,             XK_m,      spawn,          {.v = exitcmd} },
+    // super+m: Change to tiling layout
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[0]} },
+    // super+shift+m: Change to monocle layout
+	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
 
     // super+,: Move focus to other (previous?) monitor
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
