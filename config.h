@@ -43,6 +43,7 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "|M|",      centeredmaster },
 };
 
 /* key definitions */
@@ -123,9 +124,9 @@ static Key keys[] = {
 	// { MODKEY|ShiftMask,             XK_i,      spawn,          {.v = exitcmd} },
 
     // super+o: Not defined yet
-	// { MODKEY                        XK_o,      killclient,     {0} },
-    // super+shift+o: Not defined yet
-	// { MODKEY|ShiftMask,             XK_o,      spawn,          {.v = exitcmd} },
+ 	// { MODKEY,                       XK_o,      setlayout,      {.v = &layouts[3]} },
+    // super+shift+o: Set centered master layout (not my word choice!!!)
+ 	{ MODKEY|ShiftMask,             XK_o,      setlayout,      {.v = &layouts[3]} },
 
     // super+p: Not defined yet
 	// { MODKEY                        XK_p,      killclient,     {0} },
@@ -195,8 +196,8 @@ static Key keys[] = {
     // super+shift+c: Not defined yet
 	// { MODKEY|ShiftMask,             XK_c,      spawn,          {.v = exitcmd} },
 
-    // super+v: Not defined yet
-	// { MODKEY                        XK_v,      killclient,     {0} },
+    // super+v: Paste like in macOS, including terminal
+	{ MODKEY,                       XK_v,      spawn,          SHCMD("/home/nsalas/dotfiles/scripts/superv.sh") },
     // super+shift+v: Not defined yet
 	// { MODKEY|ShiftMask,             XK_v,      spawn,          {.v = exitcmd} },
 
