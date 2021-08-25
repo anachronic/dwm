@@ -61,7 +61,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+// static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 // static const char *termcmd[]  = { "kitty", NULL };
 
 static Key keys[] = {
@@ -226,8 +226,8 @@ static Key keys[] = {
     // super+shift+.: Move current window to other (next?) monitor
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
-    // super+space: Launch dmenu, should be taken by sxhkd in the future
-	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
+    // super+space: Launch dmenu, Bound in sxhkd
+	// { MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
     // super+shift+space: Toggle floating, Note that it doesn't seem to work all that well
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 };
