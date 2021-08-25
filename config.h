@@ -62,7 +62,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "kitty", NULL };
+// static const char *termcmd[]  = { "kitty", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -176,8 +176,8 @@ static Key keys[] = {
     // super+shift+l: Increase primary area size
 	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.05} },
 
-    // super+return: Spawn a shell (kitty for now)
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+    // super+return: Spawn a shell (bound in sxhkd)
+	// { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     // super+shift+return: push current window to primary area
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 
@@ -196,8 +196,8 @@ static Key keys[] = {
     // super+shift+c: Not defined yet
 	// { MODKEY|ShiftMask,             XK_c,      spawn,          {.v = exitcmd} },
 
-    // super+v: Paste like in macOS, including terminal
-	{ MODKEY,                       XK_v,      spawn,          SHCMD("/home/nsalas/dotfiles/scripts/superv.sh") },
+    // super+v: Paste (even in terminal). Bound in sxhkd
+	// { MODKEY,                       XK_v,      spawn,          SHCMD("/home/nsalas/dotfiles/scripts/superv.sh") },
     // super+shift+v: Not defined yet
 	// { MODKEY|ShiftMask,             XK_v,      spawn,          {.v = exitcmd} },
 
